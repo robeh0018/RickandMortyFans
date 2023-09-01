@@ -11,4 +11,4 @@ bootstrapApplication(AppComponent, {
     provideRouter(AppRoutes),
   ]
 })
-  .catch(err => console.log);
+  .catch(() => console.log);
