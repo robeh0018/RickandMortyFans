@@ -1,0 +1,48 @@
+$primary: #007bff;
+$secondary: #6c757d;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
+
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark
+);
+
+
+$custom-colors: (
+  "teal": #20C997FF,
+  "yellow": #ffed37,
+  "cyan": #0DCAF0FF,
+  "black": #000000FF,
+  "white": #FFFFFFFF,
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "bootstrap/scss/bootstrap";
+
+//body {
+//  background-image: url("https://images.wallpapersden.com/image/download/rick-and-morty-in-outer-space_bGdrbmuUmZqaraWkpJRmZW1lrWdpZWU.jpg");
+//  background-attachment: fixed;
+//  background-position: center;
+//  background-repeat: no-repeat;
+//  background-size: cover;
+//}
+
+.shadow-headers {
+  color: #17a2b8;
+  text-shadow: #ffed37 2px 1px;
+}
+

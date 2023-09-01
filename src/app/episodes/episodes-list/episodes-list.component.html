@@ -1,0 +1,11 @@
+<div class="row-cols-1">
+  <h1 class="text-decoration-underline shadow-headers">Episodes:</h1>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-6 col-xl-4"
+       *ngFor="let episode of (episodes$ | async)"
+  >
+    <app-episode-item [episode]="episode"></app-episode-item>
+  </div>
+</div>

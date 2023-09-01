@@ -1,0 +1,15 @@
+<div class="card text-bg-light mt-2 rounded-end-4">
+    <div class="card-header d-flex">
+        <span class="me-auto text-body-tertiary">#{{ episode.id }}</span>
+        <h5 class="me-auto">{{ episode.name }}</h5>
+    </div>
+    <div class="card-body">
+
+        <p class="card-title shadow-headers">Air Date: </p>
+        <p class="text-body-secondary">{{ episode.air_date }}</p>
+
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-outline-info w-100" (click)="onSelect(episode.id)">See more</button>
+    </div>
+</div>
