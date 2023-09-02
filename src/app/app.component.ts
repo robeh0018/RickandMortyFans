@@ -21,7 +21,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private charactersService: CharactersService,
-    private episodesService: EpisodesService) {
+    private episodesService: EpisodesService,
+  ) {
   }
 
   ngOnInit() {

@@ -1,0 +1,9 @@
+.my-custom-class .tooltip-inner {
+  background-color: #17a2b8;
+  font-size: 125%;
+  border: #ffed37 1px groove;
+}
+
+.my-custom-class.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: #17a2b8;
+}

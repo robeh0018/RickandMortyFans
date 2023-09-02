@@ -1,29 +1,30 @@
-<a routerLink="'.'" class="text-decoration-none">
-    <div class="card mb-3 user-select-none" style="max-height: 300px;">
-        <div class="d-flex flex-row-reverse">
-            <div>
-                <img
-                        [src]="character.image"
-                        class="img-thumbnail rounded"
-                        [alt]="character.name"
-                >
-            </div>
-            <div class="card-body text-start d-flex flex-column justify-content-center">
+<a [routerLink]="[character.id]" class="text-decoration-none" [@fadeIn]=""
+   placement="top" ngbTooltip="More info" tooltipClass="my-custom-class"
+>
+  <div class="card mb-3 user-select-none" style="max-height: 300px;">
+    <div class="d-flex flex-row-reverse">
+      <div>
+        <img
+          [src]="character.image"
+          class="img-thumbnail rounded"
+          [alt]="character.name"
+        >
+      </div>
+      <div class="card-body text-start d-flex flex-column justify-content-center">
 
-                <div class="card-title d-flex flex-column">
-                    <span class="text-body-tertiary m-auto">Name:</span>
-                    <h5 class="shadow-headers m-auto">{{ character.name }}</h5>
-                </div>
-                <div class="card-subtitle mt-2 d-flex flex-column">
-                    <span class="text-body-tertiary m-auto">Specie:</span>
-                    <p class="text-body-secondary m-auto">{{character.species}}</p>
-                </div>
-                <div class="card-subtitle mt-2 d-flex flex-column">
-                    <span class="text-body-tertiary m-auto">Gender:</span>
-                    <p class="text-body-secondary m-auto">{{character.gender}}</p>
-                </div>
-            </div>
+        <div class="card-title d-flex flex-column">
+          <span class="text-body-tertiary m-auto">Name:</span>
+          <h5 class="shadow-headers m-auto">{{ character.name }}</h5>
         </div>
+        <div class="card-subtitle mt-2 d-flex flex-column">
+          <span class="text-body-tertiary m-auto">Specie:</span>
+          <p class="text-body-secondary m-auto">{{character.species}}</p>
+        </div>
+        <div class="card-subtitle mt-2 d-flex flex-column">
+          <span class="text-body-tertiary m-auto">Gender:</span>
+          <p class="text-body-secondary m-auto">{{character.gender}}</p>
+        </div>
+      </div>
     </div>
+  </div>
 </a>
-<!--Hacerle un tooltip y un link para mas info-->

@@ -14,7 +14,7 @@ export class EpisodesGuard implements CanActivate {
 
     const id = +route.paramMap.get('id')!
 
-    if (this.episodesService.episodes$.getValue().length + 1 <= id || Number.isNaN(id)) {
+    if (this.episodesService.getEpisodes().getValue().length + 1 <= id || Number.isNaN(id)) {
       return this.router.navigate(['episodes']);
     }
 

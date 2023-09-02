@@ -22,7 +22,7 @@ export class EpisodesListComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.episodes$ = this.episodesService.episodes$;
+    this.episodes$ = this.episodesService.getEpisodes();
   };
 
 }

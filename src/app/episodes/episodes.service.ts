@@ -19,11 +19,11 @@ interface ApiResponse {
 
 export class EpisodesService {
 
-  episodes$: BehaviorSubject<Episode[]>;
+  #episodes$: BehaviorSubject<Episode[]>;
 
 
   constructor(private http: HttpClient, private charactersService: CharactersService) {
-    this.episodes$ = new BehaviorSubject<Episode[]>([]);
+    this.#episodes$ = new BehaviorSubject<Episode[]>([]);
   }
 
   fetchEpisodes() {
@@ -37,7 +37,7 @@ export class EpisodesService {
 
             const ids = findIdsFormUrls(characters);
 
-            const charactersMapped = this.charactersService.findCharactersById(ids);
+            const charactersMapped = this.charactersService.findCharactersByIds(ids);
 
             return {
               id,
@@ -49,17 +49,18 @@ export class EpisodesService {
         })
       )
       .subscribe(episodes => {
-        this.episodes$.next(episodes);
+        this.#episodes$.next(episodes);
       });
   };
 
   getEpisodes() {
-    return this.episodes$.getValue()
+
+    return this.#episodes$;
   };
 
   getEpisodeById(id: number) {
 
-    return this.getEpisodes().find(episode => episode.id === id) || null;
+    return this.getEpisodes().getValue().find(episode => episode.id === id) || null;
   }
 
 }
