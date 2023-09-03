@@ -18,15 +18,15 @@
   </div>
 </div>
 
-<div class="container-sm p-2 p-md-5">
+<div class="container-sm p-2 p-md-4">
   <div class="row-cols-3 d-flex">
     <h4 class="m-auto shadow-headers">Some of its Characters: </h4>
   </div>
 
   <div class="row">
 
-    <div *ngFor="let character of episode.characters" class="col-12 col-md-6">
-      <div class="card">
+    <div *ngFor="let character of episode.characters" class="col-12 col-lg-4 col-md-6 mt-2">
+      <div class="card bg-info-subtle card-elevation">
         <div class="card-body d-flex flex-row">
           <div>
             <div class="card-title">
@@ -39,7 +39,9 @@
             </div>
           </div>
           <img class="card-img img-fluid ms-auto"
-               [src]="character.image"
+               [ngSrc]="character.image"
+               width="200"
+               height="200"
                style="max-height: 100px; max-width: 200px"
                [alt]="character.name">
         </div>

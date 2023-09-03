@@ -4,6 +4,7 @@ import {Episode} from "./episode.model";
 import {BehaviorSubject, map} from "rxjs";
 import {CharactersService} from "../characters/characters.service";
 import {findIdsFormUrls} from "../helpers/findIdsFormUrls";
+import {LocalStorageService} from "../services/local-storage.service";
 
 interface ApiResponse {
   "info": {
@@ -24,7 +25,11 @@ export class EpisodesService {
   currentPage: number = 1;
   pagesTotal: number = 0;
 
-  constructor(private http: HttpClient, private charactersService: CharactersService) {
+  constructor(private http: HttpClient,
+              private charactersService: CharactersService,
+              private localStorageService: LocalStorageService,
+  ) {
+    this.#checkStore();
     this.#episodes$ = new BehaviorSubject<Episode[]>([]);
   }
 
@@ -67,5 +72,10 @@ export class EpisodesService {
     return this.getEpisodes().getValue()
       .find(episode => episode.id === id) || null;
   }
+
+  #checkStore() {
+    const storedCurrentPage = this.localStorageService.getData('episodesCurrentPage');
+    this.currentPage = (!storedCurrentPage) ? 1 : storedCurrentPage;
+  };
 
 }

@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, map} from "rxjs";
 import {Character} from "./character.model";
+import {LocalStorageService} from "../services/local-storage.service";
 
 interface ApiResponse {
   "info": {
@@ -23,7 +24,10 @@ export class CharactersService {
   currentPage = 1;
   pagesTotal: number = 0;
 
-  constructor(private http: HttpClient) {
+
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) {
+    this.#checkStore();
+
     this.#characters$ = new BehaviorSubject<Character[]>([]);
   }
 
@@ -68,4 +72,9 @@ export class CharactersService {
     return newCharacters;
   };
 
+
+  #checkStore() {
+    const storedCurrentPage = this.localStorageService.getData('characterCurrentPage');
+    this.currentPage = (!storedCurrentPage) ? 1 : storedCurrentPage;
+  };
 }

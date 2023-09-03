@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {ActivatedRoute} from "@angular/router";
 import {CharactersService} from "../characters.service";
 import {Character} from "../character.model";
@@ -8,7 +8,7 @@ import {Character} from "../character.model";
 @Component({
   selector: 'app-character-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './character-details.component.html',
   styleUrls: ['./character-details.component.css']
 })

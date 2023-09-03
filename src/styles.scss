@@ -46,3 +46,10 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
   text-shadow: #ffed37 2px 1px;
 }
 
+.card-elevation {
+  transition: box-shadow 0.3s ease
+}
+
+.card-elevation:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

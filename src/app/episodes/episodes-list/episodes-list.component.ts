@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {Episode} from "../episode.model";
 import {EpisodeItemComponent} from "./episode-item/episode-item.component";
 import {NgbPaginationModule} from "@ng-bootstrap/ng-bootstrap";
+import {LocalStorageService} from "../../services/local-storage.service";
 
 
 @Component({
@@ -19,17 +20,23 @@ export class EpisodesListComponent implements OnInit {
   pagesSize = 0;
   episodes$: Observable<Episode[]>;
 
-  constructor(public episodesService: EpisodesService) {
+  constructor(public episodesService: EpisodesService,
+              private localStorageService: LocalStorageService
+  ) {
+
     this.episodes$ = new Observable<Episode[]>();
   };
 
   ngOnInit() {
+
     this.pagesSize = this.episodesService.pagesTotal * 10;
 
     this.episodes$ = this.episodesService.getEpisodes();
   };
 
   onChangePage() {
+
+    this.localStorageService.setData('episodesCurrentPage', this.episodesService.currentPage);
 
     this.episodesService.fetchEpisodes()
   }

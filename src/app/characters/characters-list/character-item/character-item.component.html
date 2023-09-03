@@ -1,12 +1,14 @@
 <a [routerLink]="[character.id]" class="text-decoration-none" [@fadeIn]=""
    placement="top" ngbTooltip="More info" tooltipClass="my-custom-class"
 >
-  <div class="card mb-3 user-select-none" style="max-height: 300px;">
+  <div class="card mb-3 user-select-none shadow-sm" style="max-height: 300px;">
     <div class="d-flex flex-row-reverse">
       <div>
         <img
-          [src]="character.image"
-          class="img-thumbnail rounded"
+          [ngSrc]="character.image"
+          width="200"
+          height="200"
+          class="img-fluid rounded"
           [alt]="character.name"
         >
       </div>

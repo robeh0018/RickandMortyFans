@@ -5,6 +5,7 @@ import {Character} from "../character.model";
 import {CharactersService} from "../characters.service";
 import {CharacterItemComponent} from "./character-item/character-item.component";
 import {NgbPagination, NgbPaginationPages} from "@ng-bootstrap/ng-bootstrap";
+import {LocalStorageService} from "../../services/local-storage.service";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class CharactersListComponent implements OnInit {
   characters$: Observable<Character[]>;
   pagesSize = 0;
 
-  constructor(public charactersService: CharactersService) {
+  constructor(public charactersService: CharactersService, private localStorageService: LocalStorageService) {
 
     this.characters$ = new Observable<Character[]>();
   }
@@ -32,6 +33,7 @@ export class CharactersListComponent implements OnInit {
 
 
   onChangePage() {
+    this.localStorageService.setData('characterCurrentPage', this.charactersService.currentPage);
 
     this.charactersService.fetchCharacters();
   }

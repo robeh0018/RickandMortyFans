@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {Episode} from "../episode.model";
 import {EpisodesService} from "../episodes.service";
 import {ActivatedRoute} from "@angular/router";
@@ -8,7 +8,7 @@ import {map} from "rxjs";
 @Component({
   selector: 'app-episode-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './episode-details.component.html',
   styleUrls: ['./episode-details.component.css'],
 })

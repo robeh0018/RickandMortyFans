@@ -5,7 +5,8 @@
       <h1 class="bg-secondary-subtle shadow-headers rounded-end-5">{{ character.name }}</h1>
 
 
-      <img class="img-fluid rounded-end-3" [src]="character.image" [alt]="character.name">
+      <img class="img-fluid rounded-end-3 card-elevation" [ngSrc]="character.image" width="300" height="300"
+           [alt]="character.name">
     </div>
   </div>
 
