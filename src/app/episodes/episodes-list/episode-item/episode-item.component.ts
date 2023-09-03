@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {Episode} from "../../episode.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EpisodesService} from "../../episodes.service";
-import {fadeIn} from "../../../animations/fideInAnimation";
+import {fadeIn} from "../../../shared/animations/fideInAnimation";
 
 @Component({
   selector: 'app-episode-item',

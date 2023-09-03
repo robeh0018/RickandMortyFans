@@ -5,7 +5,7 @@ import {LocationsService} from "../locations.service";
 import {Observable} from "rxjs";
 import {Location} from "../location.model";
 import {NgbPagination, NgbPaginationPages} from "@ng-bootstrap/ng-bootstrap";
-import {LocalStorageService} from "../../services/local-storage.service";
+import {LocalStorageService} from "../../shared/services/local-storage.service";
 
 @Component({
   selector: 'app-locations-list',

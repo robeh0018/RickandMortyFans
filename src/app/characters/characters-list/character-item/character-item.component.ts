@@ -4,7 +4,7 @@ import {Character} from "../../character.model";
 import {RouterLink} from "@angular/router";
 import {NgbTooltip} from "@ng-bootstrap/ng-bootstrap";
 
-import {fadeIn} from "../../../animations/fideInAnimation";
+import {fadeIn} from "../../../shared/animations/fideInAnimation";
 
 @Component({
   selector: 'app-character-item',

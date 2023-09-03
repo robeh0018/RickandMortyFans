@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {Episode} from "../episode.model";
 import {EpisodeItemComponent} from "./episode-item/episode-item.component";
 import {NgbPaginationModule} from "@ng-bootstrap/ng-bootstrap";
-import {LocalStorageService} from "../../services/local-storage.service";
+import {LocalStorageService} from "../../shared/services/local-storage.service";
 
 
 @Component({

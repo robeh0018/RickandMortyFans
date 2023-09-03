@@ -5,7 +5,7 @@ import {Character} from "../character.model";
 import {CharactersService} from "../characters.service";
 import {CharacterItemComponent} from "./character-item/character-item.component";
 import {NgbPagination, NgbPaginationPages} from "@ng-bootstrap/ng-bootstrap";
-import {LocalStorageService} from "../../services/local-storage.service";
+import {LocalStorageService} from "../../shared/services/local-storage.service";
 
 
 @Component({
