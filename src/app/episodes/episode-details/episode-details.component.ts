@@ -4,6 +4,8 @@ import {Episode} from "../episode.model";
 import {EpisodesService} from "../episodes.service";
 import {ActivatedRoute} from "@angular/router";
 import {map} from "rxjs";
+import {CharactersService} from "../../characters/characters.service";
+import {Character} from "../../characters/character.model";
 
 @Component({
   selector: 'app-episode-details',
@@ -15,15 +17,17 @@ import {map} from "rxjs";
 export class EpisodeDetailsComponent implements OnInit {
 
   episode: Episode;
+  characters: Character[] = [];
 
   constructor(
     private episodesService: EpisodesService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private charactersService: CharactersService) {
 
     this.episode = {
       id: -1,
       air_date: '',
-      characters: [],
+      charactersIds: [],
       name: '',
     }
   };
@@ -37,6 +41,12 @@ export class EpisodeDetailsComponent implements OnInit {
 
         this.episode = this.episodesService.getEpisodeById(+id)!;
 
+        this.charactersService.fetchCharactersByIds(this.episode.charactersIds).subscribe(
+          character => {
+
+            this.characters = character;
+          }
+        )
       });
   };
 

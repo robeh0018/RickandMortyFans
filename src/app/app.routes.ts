@@ -14,4 +14,8 @@ export const AppRoutes: Routes = [
     path: 'characters',
     loadChildren: () => import('./characters/characters.routes').then(r => r.CharactersRoutes)
   },
+  {
+    path: 'locations',
+    loadChildren: () => import('./locations/locations.routes').then(r => r.LocationsRoutes)
+  },
 ]

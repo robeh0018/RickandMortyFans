@@ -22,12 +22,12 @@ export class CharacterDetailsComponent implements OnInit {
       id: -1,
       name: '',
       image: '',
+      status: '',
       gender: '',
       type: '',
       species: '',
-      // location
+      location: '',
     }
-
   }
 
   ngOnInit() {
@@ -36,7 +36,6 @@ export class CharacterDetailsComponent implements OnInit {
       .subscribe(params => {
 
           this.character = this.charactersService.getCharacterById(+params['id'])!
-
         }
       );
 

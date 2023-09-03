@@ -24,7 +24,7 @@ export class EpisodeItemComponent {
       id: -1,
       name: '',
       air_date: '',
-      characters: [],
+      charactersIds: [],
     }
   };
 

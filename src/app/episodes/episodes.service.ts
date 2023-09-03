@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Episode} from "./episode.model";
 import {BehaviorSubject, map} from "rxjs";
-import {CharactersService} from "../characters/characters.service";
 import {findIdsFormUrls} from "../helpers/findIdsFormUrls";
 import {LocalStorageService} from "../services/local-storage.service";
 
@@ -26,7 +25,6 @@ export class EpisodesService {
   pagesTotal: number = 0;
 
   constructor(private http: HttpClient,
-              private charactersService: CharactersService,
               private localStorageService: LocalStorageService,
   ) {
     this.#checkStore();
@@ -40,25 +38,22 @@ export class EpisodesService {
 
           this.pagesTotal = apiRes.info.pages;
 
-          return apiRes.results.map(episode => {
+          return apiRes.results
+            .map(episode => {
 
-            const {id, name, air_date, characters} = episode;
+              const {characters, ...rest} = episode;
 
-            const ids = findIdsFormUrls(characters);
+              const ids = findIdsFormUrls(characters);
 
-            const charactersMapped = this.charactersService.getCharactersByIds(ids);
-
-            return {
-              id,
-              name,
-              air_date,
-              characters: charactersMapped,
-            }
-          })
+              return {
+                ...rest,
+                charactersIds: ids,
+              };
+            });
         })
       )
       .subscribe(episodes => {
-        this.#episodes$.next(episodes);
+        this.#episodes$.next(episodes)
       });
   };
 

@@ -24,7 +24,14 @@
     </ngb-pagination>
   </div>
 
-  <div class="col-12 col-lg-6" *ngFor="let character of (characters$ | async)">
+
+  <!--  <div *ngIf="isLoading" class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">-->
+  <!--    <span class="visually-hidden">Loading...</span>-->
+  <!--  </div>-->
+
+  <div class="col-12 col-lg-6" *ngFor="let character of (characters$ | async) ">
+
     <app-character-item [character]="character"></app-character-item>
+
   </div>
 </div>

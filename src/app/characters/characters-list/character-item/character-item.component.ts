@@ -24,14 +24,11 @@ export class CharacterItemComponent {
       id: -1,
       name: '',
       image: '',
+      status: '',
       species: '',
       gender: '',
       type: '',
-      location: {
-        name: '',
-        type: '',
-        dimension: '',
-      }
+      location: '',
     }
   }
 }
