@@ -1,5 +1,6 @@
 import {Routes} from "@angular/router";
 import {EpisodesGuard} from "./episodes/episodes.guard";
+import {CharactersGuard} from "./characters/characters.guard";
 
 export const AppRoutes: Routes = [
   {path: '', redirectTo: 'episodes', pathMatch: "full"},
@@ -8,5 +9,9 @@ export const AppRoutes: Routes = [
     path: 'episodes',
     loadChildren: () => import('./episodes/episodes.routes').then(r => r.EpisodesRoutes)
   },
-  {path: 'characters', loadChildren: () => import('./characters/characters.routes').then(r => r.CharactersRoutes)},
+  {
+    providers: [CharactersGuard],
+    path: 'characters',
+    loadChildren: () => import('./characters/characters.routes').then(r => r.CharactersRoutes)
+  },
 ]

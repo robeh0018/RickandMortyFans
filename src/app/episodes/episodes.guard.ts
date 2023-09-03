@@ -7,31 +7,18 @@ import {Observable} from "rxjs";
 
 export class EpisodesGuard implements CanActivate {
 
-  constructor(public episodesService: EpisodesService, private router: Router) {
+  constructor(private episodesService: EpisodesService, private router: Router) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    const id = +route.paramMap.get('id')!
+    const id = +route.paramMap.get('id')!;
+    const episodeSelected = this.episodesService.getEpisodeById(id);
 
-    if (this.episodesService.getEpisodes().getValue().length + 1 <= id || Number.isNaN(id)) {
+    if (!episodeSelected || Number.isNaN(id)) {
       return this.router.navigate(['episodes']);
     }
 
     return true;
   }
 }
-
-// export const canActiveDetails: CanActivateFn = (route, state) => {
-//
-//   const episodesService = inject(EpisodesService);
-//   const router = inject(Router);
-//
-//   const id = +route.paramMap.get('id')!
-//
-//   if (episodesService.episodes$.getValue().length + 1 <= id || Number.isNaN(id)) {
-//     return router.navigate(['episodes']);
-//   }
-//
-//   return true;
-// }

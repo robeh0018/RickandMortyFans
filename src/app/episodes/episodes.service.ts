@@ -21,15 +21,19 @@ export class EpisodesService {
 
   #episodes$: BehaviorSubject<Episode[]>;
 
+  currentPage: number = 1;
+  pagesTotal: number = 0;
 
   constructor(private http: HttpClient, private charactersService: CharactersService) {
     this.#episodes$ = new BehaviorSubject<Episode[]>([]);
   }
 
   fetchEpisodes() {
-    this.http.get<ApiResponse>('https://rickandmortyapi.com/api/episode')
+    this.http.get<ApiResponse>(`https://rickandmortyapi.com/api/episode/?page=${this.currentPage}`)
       .pipe(
         map(apiRes => {
+
+          this.pagesTotal = apiRes.info.pages;
 
           return apiRes.results.map(episode => {
 
@@ -37,7 +41,7 @@ export class EpisodesService {
 
             const ids = findIdsFormUrls(characters);
 
-            const charactersMapped = this.charactersService.findCharactersByIds(ids);
+            const charactersMapped = this.charactersService.getCharactersByIds(ids);
 
             return {
               id,
@@ -60,7 +64,8 @@ export class EpisodesService {
 
   getEpisodeById(id: number) {
 
-    return this.getEpisodes().getValue().find(episode => episode.id === id) || null;
+    return this.getEpisodes().getValue()
+      .find(episode => episode.id === id) || null;
   }
 
 }

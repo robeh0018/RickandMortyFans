@@ -6,39 +6,39 @@ import {Character} from "../character.model";
 
 
 @Component({
-    selector: 'app-character-details',
-    standalone: true,
-    imports: [CommonModule],
-    templateUrl: './character-details.component.html',
-    styleUrls: ['./character-details.component.css']
+  selector: 'app-character-details',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './character-details.component.html',
+  styleUrls: ['./character-details.component.css']
 })
 
 export class CharacterDetailsComponent implements OnInit {
 
-    character: Character;
+  character: Character;
 
-    constructor(private route: ActivatedRoute, private charactersService: CharactersService) {
-        this.character = {
-            id: -1,
-            name: '',
-            image: '',
-            gender: '',
-            type: '',
-            species: '',
-            // location
-        }
-
+  constructor(private route: ActivatedRoute, private charactersService: CharactersService) {
+    this.character = {
+      id: -1,
+      name: '',
+      image: '',
+      gender: '',
+      type: '',
+      species: '',
+      // location
     }
 
-    ngOnInit() {
+  }
 
-        this.route.params
-            .subscribe(params => {
+  ngOnInit() {
 
-                    this.character = this.charactersService.getCharacterById(+params['id'])!
+    this.route.params
+      .subscribe(params => {
 
-                }
-            );
+          this.character = this.charactersService.getCharacterById(+params['id'])!
 
-    };
+        }
+      );
+
+  };
 }

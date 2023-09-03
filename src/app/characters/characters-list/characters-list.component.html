@@ -1,4 +1,29 @@
 <div class="row p-2 p-md-5">
+  <div class="col-12 d-flex justify-content-center">
+    <ngb-pagination [collectionSize]="pagesSize" [(page)]="charactersService.currentPage" [boundaryLinks]="true"
+                    (pageChange)="onChangePage()">
+      <ng-template ngbPaginationPages let-page let-pages="pages">
+        <li class="ngb-custom-pages-item" *ngIf="pages.length > 0">
+          <div class="mb-3 d-flex flex-nowrap px-2">
+            <label id="paginationInputLabel" class="col-form-label me-2 ms-1">Page</label>
+            <input
+              #inputPage
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              class="form-control"
+              [value]="page"
+              aria-labelledby="paginationInputLabel paginationDescription"
+              style="width: 3.5em"
+              readonly
+            />
+            <span id="paginationDescription" class="col-form-label text-nowrap px-2"> of {{pages.length}}</span>
+          </div>
+        </li>
+      </ng-template>
+    </ngb-pagination>
+  </div>
+
   <div class="col-12 col-lg-6" *ngFor="let character of (characters$ | async)">
     <app-character-item [character]="character"></app-character-item>
   </div>

@@ -1,29 +1,29 @@
 <div class="row">
-    <div class="col-12 col-md-6 d-flex">
-        <div class="m-auto">
-            <span class="text-body-tertiary">name: </span>
-            <h1 class="bg-secondary-subtle shadow-headers rounded-end-5">{{ character.name }}</h1>
+  <div class="col-12 col-md-4 d-flex">
+    <div class="m-auto">
+      <span class="text-body-tertiary">name: </span>
+      <h1 class="bg-secondary-subtle shadow-headers rounded-end-5">{{ character.name }}</h1>
 
 
-            <img class="img-fluid rounded-end-3" [src]="character.image" [alt]="character.name">
-        </div>
+      <img class="img-fluid rounded-end-3" [src]="character.image" [alt]="character.name">
+    </div>
+  </div>
+
+  <div class="col-12 col-md-8 d-flex flex-column justify-content-center p-3">
+    <div>
+      <span class="text-body-tertiary">species: </span>
+      <h5 class="bg-secondary-subtle shadow-headers rounded-end-5">{{character.species}}</h5>
+    </div>
+    <div>
+      <span class="text-body-tertiary">Gender: </span>
+      <h5 class="bg-secondary-subtle shadow-headers rounded-end-5">{{character.gender}}</h5>
+    </div>
+    <div *ngIf="character.type.length > 0">
+      <span class="text-body-tertiary">Type: </span>
+      <h5 class="bg-secondary-subtle shadow-headers rounded-end-5">{{character.type}}</h5>
     </div>
 
-    <div class="col-12 col-md-6 d-flex flex-column justify-content-center p-3">
-        <div>
-            <span class="text-body-tertiary">species: </span>
-            <h5 class="bg-secondary-subtle shadow-headers rounded-end-5">{{character.species}}</h5>
-        </div>
-        <div>
-            <span class="text-body-tertiary">Gender: </span>
-            <h5 class="bg-secondary-subtle shadow-headers rounded-end-5">{{character.gender}}</h5>
-        </div>
-        <div *ngIf="character.type.length > 0">
-            <span class="text-body-tertiary">Type: </span>
-            <h5 class="bg-secondary-subtle shadow-headers rounded-end-5">{{character.type}}</h5>
-        </div>
-
-    </div>
+  </div>
 
 
 </div>
