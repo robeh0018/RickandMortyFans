@@ -1,0 +1,38 @@
+<div class="row p-2">
+
+  <div class="col-12 col-md-6">
+    <h1 class="shadow-headers">Locations: </h1>
+  </div>
+
+  <div class="col-12 col-md-6 mt-2 mt-md-0">
+    <ngb-pagination [collectionSize]="pagesSize" [(page)]="locationsService.currentPage" [boundaryLinks]="true"
+                    (pageChange)="onChangePage()">
+      <ng-template ngbPaginationPages let-page let-pages="pages">
+        <li class="ngb-custom-pages-item" *ngIf="pages.length > 0">
+          <div class="mb-3 d-flex flex-nowrap px-2">
+            <label id="paginationInputLabel" class="col-form-label me-2 ms-1">Page</label>
+            <input
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              class="form-control"
+              [value]="page"
+              aria-labelledby="paginationInputLabel paginationDescription"
+              style="width: 3.5em"
+              readonly
+            />
+            <span id="paginationDescription" class="col-form-label text-nowrap px-2"> of {{pages.length}}</span>
+          </div>
+        </li>
+      </ng-template>
+    </ngb-pagination>
+  </div>
+</div>
+
+
+<div class="row p-2">
+  <div class="col-12 col-md-6 col-lg-4 p-2" *ngFor="let location of (locations$ | async)">
+    <app-location-item [location]="location"></app-location-item>
+  </div>
+</div>
+
